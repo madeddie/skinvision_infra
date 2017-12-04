@@ -60,15 +60,15 @@ resource "aws_security_group" "openvpn" {
 resource "aws_instance" "openvpn" {
   ami                         = "${data.aws_ami.openvpn.id}"
   instance_type               = "${var.openvpn_instance_type}"
-  availability_zone           = "${var.openvpn_az}"
+  availability_zone           = "${data.aws_availability_zones.available.names[0]}"
   subnet_id                   = "${module.vpc.public_subnets[0]}"
   vpc_security_group_ids      = ["${aws_security_group.openvpn.id}", "${module.vpc.default_security_group_id}"]
   associate_public_ip_address = true
   key_name                    = "${var.openvpn_key_name}"
-  user_data                   = "admin_pw=${var.openvpn_password}"
+  user_data                   = "admin_user=${var.openvpn_username}\nadmin_pw=${var.openvpn_password}"
 
   tags {
-    Name = "openvpn"
+    Name = "openvpn-${var.vpc_name}"
   }
 }
 

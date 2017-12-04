@@ -1,3 +1,5 @@
+data "aws_availability_zones" "available" {}
+
 module "vpc" {
   source = "terraform-aws-modules/vpc/aws"
 
@@ -16,6 +18,6 @@ module "vpc" {
 
   tags          = {
     Terraform   = "true"
-    Environment = "${var.environment}"
+    Environment = "${var.vpc_name}"
   }
 }

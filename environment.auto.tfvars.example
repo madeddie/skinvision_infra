@@ -1,0 +1,4 @@
+region = "eu-west-1"
+vpc_name = "examplevpc"
+openvpn_username = "exampleuser"
+openvpn_password = "examplepass"
