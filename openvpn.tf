@@ -68,7 +68,7 @@ resource "aws_instance" "openvpn" {
   user_data                   = "admin_user=${var.openvpn_username}\nadmin_pw=${var.openvpn_password}"
 
   tags {
-    Name = "openvpn-${var.vpc_name}"
+    Name = "openvpn-${terraform.env}"
   }
 }
 

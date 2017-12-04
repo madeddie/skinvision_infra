@@ -1,5 +1,5 @@
 resource "aws_elasticsearch_domain" "logstash" {
-  domain_name = "logstash-${var.vpc_name}"
+  domain_name = "logstash-${terraform.env}"
   elasticsearch_version = "5.5"
 
   ebs_options {
@@ -22,7 +22,7 @@ resource "aws_elasticsearch_domain" "logstash" {
 
   tags          = {
     Terraform   = "true"
-    Environment = "${var.vpc_name}"
+    Environment = "${terraform.env}"
   }
 }
   
