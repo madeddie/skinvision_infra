@@ -1,5 +1,8 @@
 variable "region" { default = "eu-west-1" }
 
+variable "s3_bucket" { }
+variable "s3_key"    { }
+
 variable "vpc_name"            { default = "dev" }
 variable "vpc_cidr"            { default = "10.0.0.0/16" }
 variable "vpc_azs"             { default = ["eu-west-1a", "eu-west-1b", "eu-west-1c"] }
